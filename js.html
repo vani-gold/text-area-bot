@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+    <title>Document</title>
+  </head>
+  <body>
+    <main>
+      <div>
+        <h1>Welcome to Chatbot vanigold's automated reply with Javascript</h1>
+      </div>
+      <!-- <textarea id="content"></textarea>
+      <button onclick="copyToClipboard()">Copy</button> -->
+      <div id="tickets">
+        <form id="mainForm" name="mainForm">
+          <input checked="checked" type="radio" name="rads" value="1" />En
+          <input type="radio" name="rads" value="2" />Fr
+        </form>
+        <span id="result"></span>
+        <button
+          id="card_withdrawal_unavailable"
+          onclick="cardWithdrawalUnavailable()"
+          class="seat"
+        >
+          card_withdrawal_unavailable
+        </button>
+        <button
+          id="card_deposit_unavailable"
+          class="seat"
+          onclick="cardDepositUnavailable()"
+        >
+          card_deposit_unavailable
+        </button>
+        <button id="please_be_patient" onclick="pleaseBePatient()" class="seat">please_be_patient</button>
+        <button id="change_phone_No" onclick="changePhoneNo()" class="seat">change_phone_No</button>
+        <button id="thank_you_msg" onclick="thankYouMsg()" class="seat">thank_you_msg</button>
+        <button id="nice_day_msg" onclick="NiceDayMsg()" class="seat">nice_day_msg</button>
+        <button id="irregular_balance" onclick="irregularBalance()" class="seat">irregular_balance</button>
+        <button id="cards_unavailable" onclick="cardsUnavailable()" class="seat">cards_unavailable</button>
+        <button id="reason_for_suspension" onclick="reasonForSuspension()" class="seat">reason_for_suspension</button>
+        <!-- <button value="0" class="seat">10</button> -->
+        <!-- <button id="submit-btn">copy</button> -->
+      </div>
+      <form action="">
+        <textarea id="text-area" val="" name="" id="" cols="80" rows="26">
+        </textarea>
+        <button onclick="copyToClipboard()">Copy</button>
+      </form>
+    </main>
+
+    <script>
+      var btn = document.getElementsByClassName(".seat");
+      let example = {
+        en: {
+          card_withdrawal_unavailable:
+            "Dear user, unfortunately card withdrawals are not available at the moment.",
+          card_deposit_unavailable:
+            "Dear user, Card Deposit is currently unavailable for an undetermined period. The bank is still working on it and we will provide an update when it's resolved.",
+          please_be_patient: "Dear user, please be patient",
+          change_phone_No:
+            "kindly upload your ID and the new and old number with their registration name",
+          thank_you_msg: "Dear user, thank you for using Noupia",
+          nice_day_msg: "Dear user, Have a nice day",
+          irregular_balance:
+            "Your card might be displaying an irregular balance.",
+          cards_unavailable:
+            "At the moment, card funding and payments through cards have been halted by the bank due to an alarming number of fraudulent transactions made by cardholders using these cards.",
+          reason_for_suspension:
+            "When you attempt or initiate a transaction or an activity more than 3 times within 5mins, the system automatically suspends your account so please always ensure to leave at least a minute between transactions or activities.",
+        },
+        fr: {
+          card_withdrawal_unavailable:
+            "Cher utilisateur, les retraits par carte ne sont malheureusement pas disponibles pour le moment.",
+          card_deposit_unavailable:
+            "Cher utilisateur, le dépôt par carte est actuellement indisponible pour une période indéterminée. La banque travaille toujours sur ce problème et nous vous informerons dès qu'il sera résolu",
+          please_be_patient: "Cher utilisateur, veuillez patienter",
+          change_phone_No:
+            "Veuillez télécharger votre identifiant ainsi que le nouveau et l'ancien numéro avec leur nom d'enregistrement",
+          thank_you_msg: "Cher utilisateur, merci d'utiliser Noupia",
+          nice_day_msg: "Cher utilisateur, passez une bonne journée",
+          irregular_balance:
+            "Votre carte affiche peut-être un solde irrégulier",
+          cards_unavailable:
+            "Actuellement, l'approvisionnement et les paiements par carte ont été interrompus par la banque en raison d'un nombre alarmant de transactions frauduleuses effectuées par les détenteurs de ces cartes.",
+          reason_for_suspension:
+            "Lorsque vous tentez ou initiez une transaction ou une activité plus de 3 fois en l'espace de 5 minutes, le système suspend automatiquement votre compte ; veillez donc à toujours laisser au moins une minute entre chaque transaction ou activité",
+        },
+      };
+
+    
+
+
+  function copyToClipboard() {
+    var copyText = document.getElementById("text-area").value;
+    navigator.clipboard.writeText(copyText).then(() => {
+        // Alert the user that the action took place.
+        // Nobody likes hidden stuff being done under the hood!
+        alert("Copied to clipboard");
+    });
+  }
+
+
+      // public variables
+      let check;
+      let radVal;
+
+      // function for language radio
+      document.mainForm.onclick = function () {
+        radVal = document.mainForm.rads.value;
+        check = result.innerHTML = "You selected: " + radVal;
+        console.log(radVal);
+      };
+
+      // card withdrwals unavailable
+      function cardWithdrawalUnavailable() {
+        if (radVal == 2) {
+          var cwu = Object.values(example.fr)[0];
+          var text = document.getElementById(
+            "card_withdrawal_unavailable"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        } else {
+          var cwu = Object.values(example.en)[0];
+          var text = document.getElementById(
+            "card_withdrawal_unavailable"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        }
+      }
+
+      // card Deposit Unavailable
+      function cardDepositUnavailable() {
+        if (radVal == 2) {
+          var cwu = Object.values(example.fr)[1];
+          var text = document.getElementById(
+            "card_deposit_unavailable"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        } else {
+          var cwu = Object.values(example.en)[1];
+          var text = document.getElementById(
+            "card_deposit_unavailable"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        }
+      }
+
+      //  please Be Patient
+      function pleaseBePatient() {
+        if (radVal == 2) {
+          var cwu = Object.values(example.fr)[2];
+          var text = document.getElementById(
+            "please_be_patient"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        } else {
+          var cwu = Object.values(example.en)[2];
+          var text = document.getElementById(
+            "please_be_patient"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        }
+      }
+
+      // change Phone No
+      function changePhoneNo() {
+        if (radVal == 2) {
+          var cwu = Object.values(example.fr)[3];
+          var text = document.getElementById(
+            "change_phone_No"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        } else {
+          var cwu = Object.values(example.en)[3];
+          var text = document.getElementById(
+            "change_phone_No"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        }
+      }
+
+      // thank You Msg
+      function thankYouMsg() {
+        if (radVal == 2) {
+          var cwu = Object.values(example.fr)[4];
+          var text = document.getElementById(
+            "thank_you_msg"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        } else {
+          var cwu = Object.values(example.en)[4];
+          var text = document.getElementById(
+            "thank_you_msg"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        }
+      }
+
+      // Nice Day Msg
+      function NiceDayMsg() {
+        if (radVal == 2) {
+          var cwu = Object.values(example.fr)[5];
+          var text = document.getElementById(
+            "nice_day_msg"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        } else {
+          var cwu = Object.values(example.en)[5];
+          var text = document.getElementById(
+            "nice_day_msg"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        }
+      }
+
+      // card irregular Balance
+      function irregularBalance() {
+        if (radVal == 2) {
+          var cwu = Object.values(example.fr)[6];
+          var text = document.getElementById(
+            "irregular_balance"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        } else {
+          var cwu = Object.values(example.en)[6];
+          var text = document.getElementById(
+            "irregular_balance"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        }
+      }
+
+      // card unavailable
+      function cardsUnavailable() {
+        if (radVal == 2) {
+          var cwu = Object.values(example.fr)[7];
+          var text = document.getElementById(
+            "cards_unavailable"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        } else {
+          var cwu = Object.values(example.en)[7];
+          var text = document.getElementById(
+            "cards_unavailable"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        }
+      }
+
+      // reason For Suspension
+      function reasonForSuspension() {
+        if (radVal == 2) {
+          var cwu = Object.values(example.fr)[8];
+          var text = document.getElementById(
+            "reason_for_suspension"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        } else {
+          var cwu = Object.values(example.en)[8];
+          var text = document.getElementById(
+            "reason_for_suspension"
+          ).value;
+          document.getElementById("text-area").value = cwu;
+        }
+      }
+
+      
+    </script>
+  </body>
+</html>
