@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
+        <title>Document</title>
+      </head>
+      <body>
+        <main>
+          <div>
+            <h1>Welcome to vanigold's automated reply with jquery</h1>
+          </div>
+          <!-- <textarea id="content"></textarea>
+      <button onclick="copyToClipboard()">Copy</button> -->
+          <div id="tickets">
+            <form id="mainForm" name="mainForm">
+              <input checked="checked" type="radio" name="rads" value="en" />En
+              <input type="radio" name="rads" value="fr" />Fr
+            </form>
+            <span id="result"></span>
+            <button id="card_withdrawal_unavailable" class="seat">
+              card_withdrawal_unavailable
+            </button>
+            <button id="card_deposit_unavailable" class="seat">
+              card_deposit_unavailable
+            </button>
+            <button id="please_be_patient" class="seat">
+              please_be_patient
+            </button>
+            <button id="change_phone_No" class="seat">change_phone_No</button>
+            <button id="thank_you_msg" class="seat">thank_you_msg</button>
+            <button id="nice_day_msg" class="seat">nice_day_msg</button>
+            <button id="irregular_balance" class="seat">
+              irregular_balance
+            </button>
+            <button id="cards_unavailable" class="seat">
+              cards_unavailable
+            </button>
+            <button id="reason_for_suspension" class="seat">
+              reason_for_suspension
+            </button>
+            <!-- <button value="0" class="seat">10</button> -->
+            <!-- <button id="submit-btn">copy</button> -->
+          </div>
+          <form action="">
+            <textarea id="text-area" val="" name="" id="" cols="80" rows="26"></textarea>
+            <button id="copy">Copy</button>
+          </form>
+        </main>
+
+        <script>
+          var btn = document.getElementsByClassName(".seat");
+          let messages = {
+            en: {
+              card_withdrawal_unavailable:
+                "Dear user, unfortunately card withdrawals are not available at the moment.",
+              card_deposit_unavailable:
+                "Dear user, Card Deposit is currently unavailable for an undetermined period. The bank is still working on it and we will provide an update when it's resolved.",
+              please_be_patient: "Dear user, please be patient",
+              change_phone_No:
+                "kindly upload your ID and the new and old number with their registration name",
+              thank_you_msg: "Dear user, thank you for using Noupia",
+              nice_day_msg: "Dear user, Have a nice day",
+              irregular_balance:
+                "Your card might be displaying an irregular balance.",
+              cards_unavailable:
+                "At the moment, card funding and payments through cards have been halted by the bank due to an alarming number of fraudulent transactions made by cardholders using these cards.",
+              reason_for_suspension:
+                "When you attempt or initiate a transaction or an activity more than 3 times within 5mins, the system automatically suspends your account so please always ensure to leave at least a minute between transactions or activities.",
+            },
+            fr: {
+              card_withdrawal_unavailable:
+                "Cher utilisateur, les retraits par carte ne sont malheureusement pas disponibles pour le moment.",
+              card_deposit_unavailable:
+                "Cher utilisateur, le dépôt par carte est actuellement indisponible pour une période indéterminée. La banque travaille toujours sur ce problème et nous vous informerons dès qu'il sera résolu",
+              please_be_patient: "Cher utilisateur, veuillez patienter",
+              change_phone_No:
+                "Veuillez télécharger votre identifiant ainsi que le nouveau et l'ancien numéro avec leur nom d'enregistrement",
+              thank_you_msg: "Cher utilisateur, merci d'utiliser Noupia",
+              nice_day_msg: "Cher utilisateur, passez une bonne journée",
+              irregular_balance:
+                "Votre carte affiche peut-être un solde irrégulier",
+              cards_unavailable:
+                "Actuellement, l'approvisionnement et les paiements par carte ont été interrompus par la banque en raison d'un nombre alarmant de transactions frauduleuses effectuées par les détenteurs de ces cartes.",
+              reason_for_suspension:
+                "Lorsque vous tentez ou initiez une transaction ou une activité plus de 3 fois en l'espace de 5 minutes, le système suspend automatiquement votre compte ; veillez donc à toujours laisser au moins une minute entre chaque transaction ou activité",
+            },
+          };
+
+        //copy to clibox
+        $("#copy").click(function(){
+            let value = $('textarea').val()
+            $("textarea").select()
+            document.execCommand('copy')
+            $('textarea').val(value)
+        })
+
+        $('.seat').click(function () {
+           let id = $(this).attr('id')
+           let language = $('input[name="rads"]:checked').val()
+          //  console.log(`${id} ${language}`)
+           let message = messages[language][id]
+          // let message = messages[language]id
+           $('#text-area').val(message)
+        })
+        </script>
+      </body>
+    </html>
+  </body>
+</html>
